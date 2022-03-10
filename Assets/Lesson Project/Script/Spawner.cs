@@ -2,26 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+namespace LernProject
 {
-    [SerializeField]private GameObject Ghost;
-    [SerializeField]private Transform SpawnPos;
-    public float TimeRes;
-
-    void Start()
+    public class Spawner : MonoBehaviour
     {
-      StartCoroutine(SpawnKD());
+        [SerializeField] private GameObject Ghost;
+        [SerializeField] private Transform SpawnPos;
+        public float TimeRes;
+
+        /*void Start()
+        {
+          StartCoroutine(SpawnKD());
+        }
+
+        void Repeat()
+        {
+            StartCoroutine(SpawnKD());
+        }
+
+        IEnumerator SpawnKD()
+        {
+            yield return new WaitForSeconds(TimeRes);
+            Instantiate(Ghost, SpawnPos.position, SpawnPos.rotation);
+            Repeat();
+        }*/
     }
 
-    void Repeat()
-    {
-        StartCoroutine(SpawnKD());
-    }
-
-    IEnumerator SpawnKD()
-    {
-        yield return new WaitForSeconds(TimeRes);
-        Instantiate(Ghost, SpawnPos.position, SpawnPos.rotation);
-        Repeat();
-    }
 }

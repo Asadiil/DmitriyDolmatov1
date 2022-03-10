@@ -7,16 +7,25 @@ namespace LernProject
     public class Player : MonoBehaviour
     {
         public GameObject shieldPrefab;
+        public GameObject MinePrefab;
+
+
+        private Rigidbody rb;
+
         public Transform SpawnPosition;
+        public Transform SpawnPositionM;
 
         private bool _isSpawnShield;
+        private bool _isSpawnMine;
         private int level = 1;
 
         private Vector3 _direction;
         public float speed = 2f;
+        public float speedRotate = 20f;
 
         private bool _isSprint;
-        private bool _isJump;
+        
+        
 
         private void Awake()
         {
@@ -25,27 +34,37 @@ namespace LernProject
 
         void Start()
         {
-
+            this.rb = this.GetComponent<Rigidbody>();
         }
 
         void Update()
         {
             if (Input.GetMouseButtonDown(1))
                 _isSpawnShield = true;
+            if (Input.GetMouseButtonDown(0))
+                _isSpawnMine = true;
             _direction.x = Input.GetAxis("Horizontal");
             _direction.z = Input.GetAxis("Vertical");
             _isSprint = Input.GetButton("Sprint");
-            _isJump = Input.GetButton("Jump");
         }
 
         private void FixedUpdate()
         {
+
             if (_isSpawnShield)
             {
                 _isSpawnShield = false;
                 SpawnShield();
             }
+            if (_isSpawnMine)
+            {
+                _isSpawnMine = false;
+                SpawnMine();
+            }
             Move(Time.fixedDeltaTime);
+
+            transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X") * speedRotate * Time.fixedDeltaTime, 0));
+
         }
         private void SpawnShield()
         {
@@ -55,10 +74,17 @@ namespace LernProject
 
             shield.transform.SetParent(SpawnPosition);
         }
+        private void SpawnMine()
+        {
+            var MineObj = Instantiate(MinePrefab, SpawnPositionM.position, SpawnPositionM.rotation);
+            var mine = MineObj.GetComponent<Mine>();
+            mine.Init(4 * level);
+        }
 
         private void Move(float delta)
         {
-            transform.position += _direction * (_isSprint ? speed * 2: speed) * delta;
+            var fixedDirection = transform.TransformDirection(_direction.normalized);
+            transform.position += fixedDirection * (_isSprint ? speed * 2: speed) * delta;
         }
     }
 }
