@@ -484,10 +484,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldPrefab: {fileID: 8809440953093714673, guid: ae9cbec0379fe824aa679512d5a9372f,
     type: 3}
-  MinePrefab: {fileID: 0}
+  MinePrefab: {fileID: 2701255660990289553, guid: 7656ad92788d7a040bfa2bc0b7e058b8,
+    type: 3}
   SpawnPosition: {fileID: 61103781733014175}
-  SpawnPositionM: {fileID: 0}
+  SpawnPositionM: {fileID: 2701255660990289550, guid: 7656ad92788d7a040bfa2bc0b7e058b8,
+    type: 3}
   speed: 2
+  speedRotate: 20
+  jumpUp: 50
 --- !u!54 &3232554875107889603
 Rigidbody:
   m_ObjectHideFlags: 0

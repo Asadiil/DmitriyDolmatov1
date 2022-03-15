@@ -9,23 +9,26 @@ namespace LernProject
         public GameObject shieldPrefab;
         public GameObject MinePrefab;
 
-
-        private Rigidbody rb;
-
         public Transform SpawnPosition;
         public Transform SpawnPositionM;
 
-        private bool _isSpawnShield;
-        private bool _isSpawnMine;
-        private int level = 1;
-
-        private Vector3 _direction;
         public float speed = 2f;
         public float speedRotate = 20f;
+        public float jumpUp = 100f;
 
+        private bool _isSpawnShield;
+        private bool _isSpawnMine;
         private bool _isSprint;
+
+        private Vector3 _direction;
+
+        private Rigidbody rb;
+
         
-        
+
+        private int level = 1;
+
+
 
         private void Awake()
         {
@@ -41,8 +44,15 @@ namespace LernProject
         {
             if (Input.GetMouseButtonDown(1))
                 _isSpawnShield = true;
+
             if (Input.GetMouseButtonDown(0))
                 _isSpawnMine = true;
+
+            if (Input.GetKeyDown(KeyCode.Space))
+                rb.AddForce(Vector3.up * jumpUp, ForceMode.Impulse);
+            if (Input.GetKeyUp(KeyCode.Space))
+                rb.AddForce(Vector3.up * -jumpUp, ForceMode.Impulse);
+
             _direction.x = Input.GetAxis("Horizontal");
             _direction.z = Input.GetAxis("Vertical");
             _isSprint = Input.GetButton("Sprint");
@@ -50,21 +60,21 @@ namespace LernProject
 
         private void FixedUpdate()
         {
+            transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X") * speedRotate * Time.fixedDeltaTime, 0));
 
             if (_isSpawnShield)
             {
                 _isSpawnShield = false;
                 SpawnShield();
             }
+
             if (_isSpawnMine)
             {
                 _isSpawnMine = false;
                 SpawnMine();
             }
+
             Move(Time.fixedDeltaTime);
-
-            transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X") * speedRotate * Time.fixedDeltaTime, 0));
-
         }
         private void SpawnShield()
         {

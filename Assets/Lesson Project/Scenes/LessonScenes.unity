@@ -2111,7 +2111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816482751}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.061872065, y: 0.50999975, z: 1.036974}
+  m_LocalPosition: {x: 0, y: 0.5, z: 1}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 6853585359580398202}
@@ -6353,9 +6353,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.25
-  m_Height: 1.2
+  m_Height: 1.2864023
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.4546916, z: 0}
 --- !u!4 &491928228778482849
 Transform:
   m_ObjectHideFlags: 0
@@ -6535,9 +6535,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6853585359580398202}
   - component: {fileID: 7026582796356034244}
-  - component: {fileID: 8456663235956728196}
   - component: {fileID: 1201112171282170457}
   - component: {fileID: 1201112171282170458}
+  - component: {fileID: 1201112171282170459}
   m_Layer: 0
   m_Name: JohnLemon
   m_TagString: Player
@@ -6565,6 +6565,7 @@ MonoBehaviour:
   SpawnPositionM: {fileID: 816482752}
   speed: 2
   speedRotate: 100
+  jumpUp: 50
 --- !u!54 &1201112171282170458
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6573,14 +6574,28 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201112171282170456}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 50
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 10
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!136 &1201112171282170459
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201112171282170456}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.19386894
+  m_Height: 1.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.70000005, z: -0.0043560863}
 --- !u!4 &1207101012452142087
 Transform:
   m_ObjectHideFlags: 0
@@ -7338,6 +7353,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
   _speedRotate: 1
+  _bullPref: {fileID: 2330225492979001153, guid: 62f591e410824c3478e0933dc158e0f7,
+    type: 3}
+  _spawnBull: {fileID: 2030188317}
+  startTimeShots: 2
 --- !u!4 &4660439634746905151
 Transform:
   m_ObjectHideFlags: 0
@@ -7807,7 +7826,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6254674911971038053}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 4.62}
+  m_LocalPosition: {x: 0, y: 0.31, z: 4.62}
   m_LocalScale: {x: 6.2701, y: 6.134603, z: 6.2701}
   m_Children:
   - {fileID: 310640819}
@@ -7845,9 +7864,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37ba802dfc4baeb41a6905732c5e3fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ghost: {fileID: 8379706426892014101}
-  SpawnPos: {fileID: 310640819}
-  TimeRes: 5
 --- !u!33 &6254674911972233061
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8590,7 +8606,8 @@ MonoBehaviour:
   _bullPref: {fileID: 2330225492979001153, guid: 62f591e410824c3478e0933dc158e0f7,
     type: 3}
   _spawnBull: {fileID: 6528001384629028713}
-  health: 12
+  _lookRotate: 3
+  _health: 12
   speed: 1
 --- !u!54 &8379706426892014103
 Rigidbody:
@@ -8608,20 +8625,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!136 &8456663235956728196
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1201112171282170456}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.4
-  m_Height: 1.4
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!1 &8601771570033283435
 GameObject:
   m_ObjectHideFlags: 0
@@ -8741,6 +8744,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387422829284133010, guid: 8a6f7024e2eb90140bdf570ef653bac8,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387422829284133010, guid: 8a6f7024e2eb90140bdf570ef653bac8,
+        type: 3}
+      propertyPath: m_Direction
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4903280789943914309, guid: 8a6f7024e2eb90140bdf570ef653bac8,
         type: 3}

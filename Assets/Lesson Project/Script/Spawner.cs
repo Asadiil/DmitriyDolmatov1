@@ -6,11 +6,11 @@ namespace LernProject
 {
     public class Spawner : MonoBehaviour
     {
-        [SerializeField] private GameObject Ghost;
+        /*[SerializeField] private GameObject Ghost;
         [SerializeField] private Transform SpawnPos;
         public float TimeRes;
 
-        /*void Start()
+        void Start()
         {
           StartCoroutine(SpawnKD());
         }

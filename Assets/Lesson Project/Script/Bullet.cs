@@ -7,7 +7,7 @@ namespace LernProject
     
     public class Bullet : MonoBehaviour
     {
-        [SerializeField] private float _damage = 3;
+        [SerializeField] private float _damage = 4f;
         private Transform _target;
         private float _speed;
 

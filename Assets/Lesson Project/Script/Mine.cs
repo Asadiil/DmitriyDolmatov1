@@ -2,13 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mine : MonoBehaviour
+namespace LernProject
 {
-    [SerializeField]private float _damag = 4f;
-
-    public void Init(float damag)
+    public class Mine : MonoBehaviour
     {
-        _damag = damag;
-        Destroy(gameObject, 3f);
-    }
+        [SerializeField] private float _damage = 1f;
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.TryGetComponent(out ITakeDamage takeDamage))
+            {
+                Debug.Log("BOOOOM");
+                takeDamage.Hit(_damage);
+            }
+        }
+
+        public void Init(float damage)
+        {
+            _damage = damage;
+            Destroy(gameObject, 3f);
+        }
+    } 
 }

@@ -826,6 +826,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
+  _bullPref: {fileID: 0}
+  _spawnBull: {fileID: 0}
+  _lookRotate: 4
+  _durability: 1
+  speed: 2
 --- !u!1 &8808380697998152894
 GameObject:
   m_ObjectHideFlags: 0
