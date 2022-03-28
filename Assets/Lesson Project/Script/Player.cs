@@ -6,15 +6,16 @@ namespace LernProject
 {
     public class Player : MonoBehaviour
     {
-        public GameObject shieldPrefab;
-        public GameObject MinePrefab;
+        [SerializeField] private GameObject shieldPrefab;
+        [SerializeField] private GameObject MinePrefab;
+        [SerializeField] private GameObject BoxPrefab;
 
-        public Transform SpawnPosition;
-        public Transform SpawnPositionM;
+        [SerializeField] private Transform SpawnPosition;
+        [SerializeField] private Transform SpawnPositionM;
 
-        public float speed = 2f;
-        public float speedRotate = 20f;
-        public float jumpUp = 100f;
+        [SerializeField] private float speed = 2f;
+        [SerializeField] private float speedRotate = 20f;
+        [SerializeField] private float jumpUp = 100f;
 
         private bool _isSpawnShield;
         private bool _isSpawnMine;
@@ -84,12 +85,22 @@ namespace LernProject
 
             shield.transform.SetParent(SpawnPosition);
         }
+        
         private void SpawnMine()
         {
             var MineObj = Instantiate(MinePrefab, SpawnPositionM.position, SpawnPositionM.rotation);
             var mine = MineObj.GetComponent<Mine>();
             mine.Init(4 * level);
         }
+
+        /*private void SpawnBox()
+        {
+            var boxObj = Instantiate(shieldPrefab, SpawnPosition.position, SpawnPosition.rotation);
+            var shield = boxObj.GetComponent<Box>();
+            
+
+            box.transform.SetParent(SpawnPosition);
+        }*/
 
         private void Move(float delta)
         {

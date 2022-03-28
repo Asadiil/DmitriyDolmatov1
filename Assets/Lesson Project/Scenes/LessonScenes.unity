@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.1802834, g: 0.2257135, b: 0.3069223, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6535,8 +6535,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6853585359580398202}
   - component: {fileID: 7026582796356034244}
-  - component: {fileID: 1201112171282170457}
   - component: {fileID: 1201112171282170458}
+  - component: {fileID: 1201112171282170457}
   - component: {fileID: 1201112171282170459}
   m_Layer: 0
   m_Name: JohnLemon
@@ -6561,6 +6561,7 @@ MonoBehaviour:
     type: 3}
   MinePrefab: {fileID: 2701255660990289553, guid: 7656ad92788d7a040bfa2bc0b7e058b8,
     type: 3}
+  BoxPrefab: {fileID: 0}
   SpawnPosition: {fileID: 816482752}
   SpawnPositionM: {fileID: 816482752}
   speed: 2
@@ -7826,7 +7827,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6254674911971038053}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.31, z: 4.62}
+  m_LocalPosition: {x: 0.654, y: 0.31, z: 4.62}
   m_LocalScale: {x: 6.2701, y: 6.134603, z: 6.2701}
   m_Children:
   - {fileID: 310640819}

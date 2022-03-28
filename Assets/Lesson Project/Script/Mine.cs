@@ -20,7 +20,7 @@ namespace LernProject
         public void Init(float damage)
         {
             _damage = damage;
-            Destroy(gameObject, 3f);
+            Destroy(gameObject, 3f);//без этого 3f
         }
     } 
 }

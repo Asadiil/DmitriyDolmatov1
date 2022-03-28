@@ -24,14 +24,6 @@ namespace LernProject
         }
         void Update()
         {
-            //transform.LookAt(_player.transform);
-
-            /* if (Vector3.Distance(transform.position, _player.transform.position) <= 4)
-             {
-                 if (Input.GetMouseButtonDown(2))
-                 {
-                     _isSpawnBull = true;
-                 }*/
 
             if (timeShots <= 0)
             {

@@ -19,14 +19,11 @@ namespace LernProject
 
 		void Start()
         {
-            _player = FindObjectOfType<Player>(); //выбор обЪекта.
+            _player = FindObjectOfType<Player>(); //поиск обЪекта.
         }
 
 		void Update()
 		{
-			//transform.LookAt(_player.transform); // поворот противника (персонажа)на игрока look
-			//transform.Translate(Vector3.forward * Time.deltaTime * speed); // изменение на позиции. движение.look/speed
-
 			if (Vector3.Distance(transform.position, _player.transform.position) <= 3)//fire
             {
 				if (Input.GetMouseButtonDown(2))
@@ -55,7 +52,6 @@ namespace LernProject
 		}
 
 		//fire
-
 		private void Fire()
         {
 			var bullObj = Instantiate(_bullPref, _spawnBull.position, _spawnBull.rotation);
@@ -80,23 +76,7 @@ namespace LernProject
 			}
 
 		}
-
-
-		//damage
-		public void Init(float health)
-		{
-			_health = health;
-			Destroy(gameObject, 1f);
-		}
-
-		public void Hit(float damage)
-		{
-			_health -= damage;
-
-			if (_health <= 0)
-				Destroy(gameObject);
-		}
-
+		//look bool
 		bool CanSeePlayer()
 		{
 			RaycastHit hit;
@@ -112,6 +92,21 @@ namespace LernProject
 			}
 
 			return false;
+		}
+
+		//damage
+		public void Init(float health)
+		{
+			_health = health;
+			Destroy(gameObject, 1f);
+		}
+
+		public void Hit(float damage)
+		{
+			_health -= damage;
+
+			if (_health <= 0)
+				Destroy(gameObject);
 		}
 	}
 }
