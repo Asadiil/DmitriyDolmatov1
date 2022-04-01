@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace LernProject
 {
@@ -8,7 +7,6 @@ namespace LernProject
     {
         [SerializeField] private GameObject shieldPrefab;
         [SerializeField] private GameObject MinePrefab;
-        [SerializeField] private GameObject BoxPrefab;
 
         [SerializeField] private Transform SpawnPosition;
         [SerializeField] private Transform SpawnPositionM;
@@ -16,6 +14,9 @@ namespace LernProject
         [SerializeField] private float speed = 2f;
         [SerializeField] private float speedRotate = 20f;
         [SerializeField] private float jumpUp = 100f;
+        [SerializeField] public static float Health = 150f;
+
+        [SerializeField] private Text _healthPoint;
 
         private bool _isSpawnShield;
         private bool _isSpawnMine;
@@ -25,16 +26,7 @@ namespace LernProject
 
         private Rigidbody rb;
 
-        
-
         private int level = 1;
-
-
-
-        private void Awake()
-        {
-
-        }
 
         void Start()
         {
@@ -57,6 +49,7 @@ namespace LernProject
             _direction.x = Input.GetAxis("Horizontal");
             _direction.z = Input.GetAxis("Vertical");
             _isSprint = Input.GetButton("Sprint");
+            _healthPoint.text = Health.ToString();
         }
 
         private void FixedUpdate()
@@ -92,15 +85,6 @@ namespace LernProject
             var mine = MineObj.GetComponent<Mine>();
             mine.Init(4 * level);
         }
-
-        /*private void SpawnBox()
-        {
-            var boxObj = Instantiate(shieldPrefab, SpawnPosition.position, SpawnPosition.rotation);
-            var shield = boxObj.GetComponent<Box>();
-            
-
-            box.transform.SetParent(SpawnPosition);
-        }*/
 
         private void Move(float delta)
         {

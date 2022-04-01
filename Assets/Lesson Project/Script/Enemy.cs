@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace LernProject
@@ -19,7 +17,7 @@ namespace LernProject
 
 		void Start()
         {
-            _player = FindObjectOfType<Player>(); //поиск обЪекта.
+            _player = FindObjectOfType<Player>(); //поиск обЪекта, игрока.
         }
 
 		void Update()
@@ -64,14 +62,13 @@ namespace LernProject
 		{
 
 
-			var direction = _player.transform.position - transform.position;
+			var direction = _player.transform.position - transform.position; // рассчет расстояния
 			var stepRotate = Vector3.RotateTowards(transform.forward, direction, 
-				_lookRotate * Time.fixedDeltaTime, 0f);
-
+				_lookRotate * Time.fixedDeltaTime, 0f); // поворот на игрока
 			if (CanSeePlayer() == true)
 			{
-				Debug.Log("player");
-				transform.rotation = Quaternion.LookRotation(stepRotate);
+				Debug.Log("player"); //мой дебаг!!!
+				transform.rotation = Quaternion.LookRotation(stepRotate); // поворот
 				transform.Translate(Vector3.forward * Time.deltaTime * speed);//двигало
 			}
 
@@ -80,12 +77,12 @@ namespace LernProject
 		bool CanSeePlayer()
 		{
 			RaycastHit hit;
-			var direction = _player.transform.position - transform.position;
+			var direction = _player.transform.position - transform.position;//рассчет расстояния
 
-			if ((Vector3.Angle(direction, transform.forward)) <= 90f * 0.5f)
+			if ((Vector3.Angle(direction, transform.forward)) <= 90f * 0.5f) //проверка на вхождение в зону видимости
 			{
 				
-				if (Physics.Raycast(transform.position, direction, out hit, _lookRotate))
+				if (Physics.Raycast(transform.position, direction, out hit, _lookRotate))//проверка на вхождение игрока в зону
 				{
 					return (hit.transform.CompareTag("Player"));
 				}
@@ -98,7 +95,6 @@ namespace LernProject
 		public void Init(float health)
 		{
 			_health = health;
-			Destroy(gameObject, 1f);
 		}
 
 		public void Hit(float damage)

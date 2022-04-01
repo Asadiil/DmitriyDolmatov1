@@ -1,38 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace LernProject
 {
     public class ObjectUse : MonoBehaviour
     {
-
-
-        /*[SerializeField] private Transform _useobject;
-        [SerializeField] private GameObject gameObject;
-
-        private bool _isObjectUse;
-
-        private void OnTriggerStay(Collider other)
+        void Update()
         {
-            if (other.CompareTag("Player"))
-            {
-                if (Input.GetKeyDown(KeyCode.E))
-                    _isObjectUse = true;
-            }
+            transform.Rotate(new Vector3(0, 1, 0));
         }
 
-        private void OnTriggerEnter(Collider other)
+        void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player") && !_isObjectUse)
-            {
-                if (other.CompareTag("Player"))
-                {
-                    if (Input.GetKeyDown(KeyCode.E))
-                        _isObjectUse = true;
-                }
-            }
+            Player.Health += 50f;
+            Destroy(gameObject);
         }
-        box.transform.SetParent(gameObject)*/
     } 
 }
