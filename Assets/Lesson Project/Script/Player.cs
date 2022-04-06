@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace LernProject
 {
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour, ITakeDamage
     {
         [SerializeField] private GameObject shieldPrefab;
         [SerializeField] private GameObject MinePrefab;
@@ -14,6 +14,7 @@ namespace LernProject
         [SerializeField] private float speed = 2f;
         [SerializeField] private float speedRotate = 20f;
         [SerializeField] private float jumpUp = 100f;
+
         [SerializeField] public static float Health = 150f;
 
         [SerializeField] private Text _healthPoint;
@@ -89,7 +90,20 @@ namespace LernProject
         private void Move(float delta)
         {
             var fixedDirection = transform.TransformDirection(_direction.normalized);
-            transform.position += fixedDirection * (_isSprint ? speed * 2: speed) * delta;
+            transform.position += (_isSprint ? speed * 2: speed) * delta * fixedDirection;
+        }
+
+        public void Init(float health)
+        {
+            Health = health;
+        }
+
+        public void Hit(float damage)
+        {
+            Health -= damage;
+
+            //if (_health <= 0)
+                //Destroy(gameObject);
         }
     }
 }

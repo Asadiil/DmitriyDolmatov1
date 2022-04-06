@@ -22,7 +22,7 @@ namespace LernProject
         {
             yield return new WaitForSeconds(TimeRes);
             Instantiate(Ghost, SpawnPos.position, SpawnPos.rotation);
-            Repeat();
+            Repeat(5);
         }*/
     }
 

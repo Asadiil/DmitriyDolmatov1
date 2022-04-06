@@ -14,12 +14,10 @@ namespace LernProject
         {
             _target = target;
             _speed = speed;
-            Destroy(gameObject, lifeTime);
         }
 
         void FixedUpdate()
         {
-            //transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed);
             transform.position += transform.forward * _speed * Time.fixedDeltaTime;
         }
 
@@ -28,6 +26,7 @@ namespace LernProject
             if (collision.gameObject.TryGetComponent(out ITakeDamage takeDamage))
             {
                 takeDamage.Hit(_damage);
+                Destroy(gameObject);
             }
         }
     }
