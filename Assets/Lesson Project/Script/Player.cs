@@ -36,21 +36,20 @@ namespace LernProject
 
         void Update()
         {
+            _healthPoint.text = Health.ToString();
+
             if (Input.GetMouseButtonDown(1))
                 _isSpawnShield = true;
-
             if (Input.GetMouseButtonDown(0))
                 _isSpawnMine = true;
 
             if (Input.GetKeyDown(KeyCode.Space))
-                rb.AddForce(Vector3.up * jumpUp, ForceMode.Impulse);
-            if (Input.GetKeyUp(KeyCode.Space))
-                rb.AddForce(Vector3.up * -jumpUp, ForceMode.Impulse);
+                rb.AddForce(Vector3.up * jumpUp, ForceMode.Acceleration);
 
             _direction.x = Input.GetAxis("Horizontal");
             _direction.z = Input.GetAxis("Vertical");
             _isSprint = Input.GetButton("Sprint");
-            _healthPoint.text = Health.ToString();
+            
         }
 
         private void FixedUpdate()
