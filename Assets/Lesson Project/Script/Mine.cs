@@ -15,7 +15,6 @@ namespace LernProject
                 Debug.Log("BOOOOM");
                 takeDamage.Hit(_damage);
                 Explode();
-                Destroy(gameObject);
             }
         }
 

@@ -26,7 +26,7 @@ namespace LernProject
             waitTime = startWaitTime;
             randomSpot = Random.Range(0, moveSpots.Length);
             agent = GetComponent<NavMeshAgent>();
-            //agent.updateRotation = false;
+            
         }
 
         private void Start()

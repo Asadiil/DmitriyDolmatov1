@@ -16,8 +16,10 @@ namespace LernProject
         [SerializeField] private float jumpUp = 100f;
 
         [SerializeField] public static float Health = 150f;
-
+        [SerializeField] public float HP;
         [SerializeField] private Text _healthPoint;
+        public Image bar;
+        private float fill;
 
         private bool _isSpawnShield;
         private bool _isSpawnMine;
@@ -31,12 +33,17 @@ namespace LernProject
 
         void Start()
         {
+            HP = Health;
             this.rb = this.GetComponent<Rigidbody>();
+            fill = 1f;
         }
 
         void Update()
         {
+
+            fill = Health/HP;
             _healthPoint.text = Health.ToString();
+            bar.fillAmount = fill;
 
             if (Input.GetMouseButtonDown(1))
                 _isSpawnShield = true;
